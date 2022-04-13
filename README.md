@@ -1,5 +1,26 @@
 ## OpenCV: Open Source Computer Vision Library
+---
+### Cross compilation for riscv64 with musl libc
+#### Install cross compilation tools:
+```
+wget https://musl.cc/riscv64-linux-musl-cross.tgz
+tar xvf riscv64-linux-musl-cross.tgz
+export PATH=/path/to/riscv64-linux-musl-cross/bin:$PATH
+```
+#### Getting OpenCV Source Code
+```
+git clone https://github.com/elliott10/opencv.git
+```
+#### Building OpenCV
+```
+mkdir -p opencv/build && cd opencv/build
+cmake -DCMAKE_TOOLCHAIN_FILE=../platforms/linux/riscv64-musl-gcc.toolchain.cmake -DCMAKE_INSTALL_PREFIX=$PWD/install  ../
+make -j8
+make install
+```
+The binaries will be placed in this directory: `opencv/build/bin/`
 
+---
 ### Resources
 
 * Homepage: <https://opencv.org>
