@@ -19,10 +19,10 @@ if(NOT HAVE_FFMPEG AND WIN32 AND NOT ARM AND NOT OPENCV_FFMPEG_SKIP_DOWNLOAD)
   endif()
 endif()
 
-set(_required_ffmpeg_libraries libavcodec libavformat libavutil libswscale libswresample) #to pass ffmpeg for riscv64 check
+set(_required_ffmpeg_libraries libavcodec libavformat libavutil libswscale)
 set(_used_ffmpeg_libraries ${_required_ffmpeg_libraries})
 if(NOT HAVE_FFMPEG AND PKG_CONFIG_FOUND)
-  ocv_check_modules(FFMPEG libavcodec libavformat libavutil libswscale libswresample)
+  ocv_check_modules(FFMPEG libavcodec libavformat libavutil libswscale)
   if(FFMPEG_FOUND)
     ocv_check_modules(FFMPEG_libavresample libavresample) # optional
     if(FFMPEG_libavresample_FOUND)
