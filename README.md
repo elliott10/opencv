@@ -7,14 +7,26 @@ wget https://musl.cc/riscv64-linux-musl-cross.tgz
 tar xvf riscv64-linux-musl-cross.tgz
 export PATH=/path/to/riscv64-linux-musl-cross/bin:$PATH
 ```
+#### Building 
+```
+cd ffmpeg-5.0.1
+mkdir build
+./configure --enable-cross-compile --cross-prefix=riscv64-linux-musl- --arch=riscv64 --target-os=linux --enable-static --enable-shared --prefix=$PWD/install \
+
+make
+make install
+```
+
 #### Getting OpenCV Source Code
 ```
 git clone https://github.com/elliott10/opencv.git
 ```
 #### Building OpenCV
+
 ```
 mkdir -p opencv/build && cd opencv/build
-cmake -DCMAKE_TOOLCHAIN_FILE=../platforms/linux/riscv64-musl-gcc.toolchain.cmake -DCMAKE_INSTALL_PREFIX=$PWD/install  ../
+export PKG_CONFIG_LIBDIR=/path/to/ffmpeg-5.0.1/build/install/lib/pkgconfig
+cmake -DCMAKE_TOOLCHAIN_FILE=../platforms/linux/riscv64-musl-gcc.toolchain.cmake -DWITH_FFMPEG=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$PWD/install  ../
 make -j8
 make install
 ```
