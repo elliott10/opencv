@@ -7,7 +7,7 @@ wget https://musl.cc/riscv64-linux-musl-cross.tgz
 tar xvf riscv64-linux-musl-cross.tgz
 export PATH=/path/to/riscv64-linux-musl-cross/bin:$PATH
 ```
-#### Building 
+#### Building FFMPEG
 ```
 cd ffmpeg-5.0.1
 mkdir build
