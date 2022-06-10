@@ -30,7 +30,17 @@ cmake -DCMAKE_TOOLCHAIN_FILE=../platforms/linux/riscv64-musl-gcc.toolchain.cmake
 make -j8
 make install
 ```
-The binaries will be placed in this directory: `opencv/build/bin/`
+Notice:
+<br> When runing cmake, please remember to set `PKG_CONFIG_LIBDIR`.
+<br> After cmake, make sure the output is like this:
+```
+FFMPEG:                      YES
+  avcodec:                   YES
+  avformat:                  YES
+  avutil:                    YES
+  swscale:                   YES
+```
+The compiled binaries will be placed in this directory: `opencv/build/bin/`
 
 ---
 ### Resources
